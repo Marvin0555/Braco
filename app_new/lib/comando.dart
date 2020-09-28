@@ -6,12 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 int i = 180;
+int j = 180;
 
-class HomeScreen extends StatelessWidget {
+class HomeScreent extends StatefulWidget {
   @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
 
-  //String a = i.toString();
-
+class _HomeScreenState extends State<HomeScreent> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -23,79 +26,88 @@ class HomeScreen extends StatelessWidget {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    i = i - 10;
-                    _incrementCounter();
-                  },
-                  child: Text(i.toString(), style: TextStyle(fontSize: 20)),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    i = i + 10;
-                    _incrementCounter();
-                  },
-                  child: Text(i.toString(), style: TextStyle(fontSize: 20)),
-                )
+                Butoon('+10', motor1_soma),
+                Text(i.toString()),
+                Butoon('-10', motor1_sub),
               ],
             ),
-            Butoon('w', aaa),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Butoon('+10', motor2_soma),
+                Text(j.toString()),
+                Butoon('-10', motor2_sub),
+              ],
+            ),
           ],
         )));
   }
-}
 
-class PatientRegisScreen {}
+  Future<void> motor1_soma() async {
+    setState(() {
+      i = i + 9;
+    });
+    _motor01();
+  }
 
-class LisTileInfo extends StatelessWidget {
-  final IconData icone;
-  final String textListe;
-  final Widget screenDesired;
-  LisTileInfo(this.icone, this.textListe, this.screenDesired);
-  @override
-  Widget build(BuildContext context) {
-    //var icone2 = icone;
-    return ListTile(
-      leading: Icon(icone),
-      title: Text(textListe),
-      onTap: () {
-        //gera eventos
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => screenDesired));
-      },
-    );
+  Future<void> motor1_sub() async {
+    setState(() {
+      i = i - 9;
+    });
+    _motor01();
+  }
+
+  Future<void> motor2_soma() async {
+    setState(() {
+      j = j + 9;
+    });
+    _motor02();
+  }
+
+  Future<void> motor2_sub() async {
+    setState(() {
+      j = j - 9;
+    });
+    _motor02();
   }
 }
 
-class Butoon extends StatelessWidget {
+class Butoon extends StatefulWidget {
   @override
   final String textListe;
   final Function ddd;
   Butoon(this.textListe, this.ddd);
+
+  @override
+  _ButoonState createState() => _ButoonState();
+}
+
+class _ButoonState extends State<Butoon> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(3),
         child: RaisedButton(
           onPressed: () {
-            ddd();
+            widget.ddd();
           },
-          child: Text(textListe, style: TextStyle(fontSize: 20)),
+          child: Text(widget.textListe, style: TextStyle(fontSize: 20)),
         ));
   }
 }
 
-Future<void> aaa() async {
-  i = i - 9;
-  _incrementCounter();
-}
-
 const _base = 'https://coco-1f532.firebaseio.com/';
-Future<void> _incrementCounter() async {
+Future<void> _motor01() async {
   final respone = await http.patch(
     "$_base/.json",
-    body: json.encode({'redlight': i}),
+    body: json.encode({'moto1': i}),
   );
-
   final id = json.decode(respone.body)['name'];
   print(json.decode(respone.body));
+}
+
+Future<void> _motor02() async {
+  final respone = await http.patch(
+    "$_base/.json",
+    body: json.encode({'moto2': j}),
+  );
 }

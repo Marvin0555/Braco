@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           RaisedButton(
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                  .push(MaterialPageRoute(builder: (context) => HomeScreent()));
             },
             child: const Text('Entrar', style: TextStyle(fontSize: 20)),
           ),
