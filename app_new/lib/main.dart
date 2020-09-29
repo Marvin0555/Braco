@@ -33,14 +33,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _controllerLogin = TextEditingController();
-  int _counter = 0;
   static const _base = 'https://marcos-bb52f.firebaseio.com/';
+  // ignore: unused_element
   Future<void> _incrementCounter() async {
     final respone = await http.patch(
       "$_base/users/-MII18GhE6d5jhRu6gVO.json",
       body: json.encode({'name': 'weqwyye', 'email': 'ryr'}),
     );
 
+    // ignore: unused_local_variable
     final id = json.decode(respone.body)['name'];
     print(json.decode(respone.body));
   }

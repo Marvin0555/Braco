@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -26,45 +24,45 @@ class _HomeScreenState extends State<HomeScreent> {
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Butoon('+10', motor1_soma),
+                Butoon('+10', motor1Soma),
                 Text(i.toString()),
-                Butoon('-10', motor1_sub),
+                Butoon('-10', motor1Sub),
               ],
             ),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Butoon('+10', motor2_soma),
+                Butoon('+10', motor2Soma),
                 Text(j.toString()),
-                Butoon('-10', motor2_sub),
+                Butoon('-10', motor2Sub),
               ],
             ),
           ],
         )));
   }
 
-  Future<void> motor1_soma() async {
+  Future<void> motor1Soma() async {
     setState(() {
       i = i + 9;
     });
     _motor01();
   }
 
-  Future<void> motor1_sub() async {
+  Future<void> motor1Sub() async {
     setState(() {
       i = i - 9;
     });
     _motor01();
   }
 
-  Future<void> motor2_soma() async {
+  Future<void> motor2Soma() async {
     setState(() {
       j = j + 9;
     });
     _motor02();
   }
 
-  Future<void> motor2_sub() async {
+  Future<void> motor2Sub() async {
     setState(() {
       j = j - 9;
     });
@@ -72,25 +70,20 @@ class _HomeScreenState extends State<HomeScreent> {
   }
 }
 
-class Butoon extends StatefulWidget {
+class Butoon extends StatelessWidget {
   @override
+  // ignore: override_on_non_overriding_member
   final String textListe;
   final Function ddd;
   Butoon(this.textListe, this.ddd);
-
-  @override
-  _ButoonState createState() => _ButoonState();
-}
-
-class _ButoonState extends State<Butoon> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(3),
         child: RaisedButton(
           onPressed: () {
-            widget.ddd();
+            ddd();
           },
-          child: Text(widget.textListe, style: TextStyle(fontSize: 20)),
+          child: Text(textListe, style: TextStyle(fontSize: 20)),
         ));
   }
 }
@@ -101,11 +94,13 @@ Future<void> _motor01() async {
     "$_base/.json",
     body: json.encode({'moto1': i}),
   );
-  final id = json.decode(respone.body)['name'];
-  print(json.decode(respone.body));
+  // ignore: unused_local_variable
+  // final id = json.decode(respone.body)['name'];
+  //print(json.decode(respone.body));
 }
 
 Future<void> _motor02() async {
+  // ignore: unused_local_variable
   final respone = await http.patch(
     "$_base/.json",
     body: json.encode({'moto2': j}),
