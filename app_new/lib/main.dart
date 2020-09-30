@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepOrange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'APP Iot'),
@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 100.0,
           ),
           RaisedButton(
+            color: Colors.green[300],
             onPressed: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomeScreent()));
