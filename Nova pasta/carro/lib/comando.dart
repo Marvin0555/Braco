@@ -23,23 +23,29 @@ class _HomeScreenState extends State<HomeScreent> {
         title: Text('Comandos'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Butoon(Icons.arrow_back, 3),
-                Column(
-                  children: [
-                    Butoon(Icons.arrow_upward, 1),
-                    Butoon(Icons.arrow_downward, 4),
-                  ],
-                ),
-                Butoon(Icons.arrow_forward, 2),
-              ],
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('images/carocean1.png'),
+              SizedBox(
+                height: 150.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Butoon(Icons.arrow_back, 3),
+                  Column(
+                    children: [
+                      Butoon(Icons.arrow_upward, 1),
+                      Butoon(Icons.arrow_downward, 4),
+                    ],
+                  ),
+                  Butoon(Icons.arrow_forward, 2),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
 // This trailing comma makes auto-formatting nicer for build methods.

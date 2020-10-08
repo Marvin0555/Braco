@@ -40,18 +40,26 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Center(
-            child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-          SizedBox(
-            height: 100.0,
-          ),
-          RaisedButton(
-            color: Colors.green[300],
-            onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeScreent()));
-            },
-            child: const Text('Entrar', style: TextStyle(fontSize: 20)),
-          ),
-        ])));
+          child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(100.0),
+                  child: Image.asset('images/ocean.png'),
+                ),
+                SizedBox(
+                  height: 100.0,
+                ),
+                RaisedButton(
+                  color: Colors.green[300],
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => HomeScreent()));
+                  },
+                  child: const Text('Entrar', style: TextStyle(fontSize: 30)),
+                ),
+              ])),
+        ));
   }
 }
