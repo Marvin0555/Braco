@@ -24,7 +24,7 @@ void sublishLocation(String subtopicName) {
 }
 
 void publishLocation(String pubtopicName, String messageVale) {
-  connectClient().then((value) => _publishToTopic(pubtopicName, messageVale));
+  _publishToTopic(pubtopicName, messageVale);
 }
 
 Future<void> connectClient() async {
@@ -113,7 +113,6 @@ void _subscribeToTopic(String topicName) {
     final String message =
         mqtt.MqttPublishPayload.bytesToStringAsString(recMess.payload.message);
     print("MQTTClientWrapper::GOT A NEW MESSAGE $message");
-    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
     print(message);
   });
 }

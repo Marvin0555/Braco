@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:carro/mqttcommunication.dart';
 import 'package:carro/comando.dart';
 import 'package:flutter/material.dart';
 
@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 RaisedButton(
                   color: Colors.green[300],
                   onPressed: () {
+                    connectClient().then((value) => null);
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => HomeScreent()));
                   },

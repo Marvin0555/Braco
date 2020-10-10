@@ -57,6 +57,7 @@ class Butoon extends StatelessWidget {
   @override
   // ignore: override_on_non_overriding_member
   final IconData icon;
+  //int valores;
   int directionValue;
   Butoon(this.icon, this.directionValue);
   Widget build(BuildContext context) {
@@ -68,10 +69,11 @@ class Butoon extends StatelessWidget {
           onHighlightChanged: (valor) {
             if (valor == true) {
               i = directionValue;
-            } else {
+              publishLocation(topic_pup1, i.toString());
+            } else if (directionValue != 2 && directionValue != 3) {
               i = 5;
+              publishLocation(topic_pup1, i.toString());
             }
-            publishLocation(topic_pup1, i.toString());
           },
           //animationDuration: Duration(seconds: 2),
           onPressed: () {},
