@@ -23,28 +23,31 @@ class _HomeScreenState extends State<HomeScreent> {
         title: Text('Comandos'),
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('images/carocean1.png'),
-              SizedBox(
-                height: 150.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Butoon(Icons.arrow_back, 3),
-                  Column(
-                    children: [
-                      Butoon(Icons.arrow_upward, 1),
-                      Butoon(Icons.arrow_downward, 4),
-                    ],
-                  ),
-                  Butoon(Icons.arrow_forward, 2),
-                ],
-              ),
-            ],
+        child: Container(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('images/carocean1.png'),
+                SizedBox(
+                  height: 100.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Butoon(Icons.arrow_back, 3),
+                    Column(
+                      children: [
+                        Butoon(Icons.arrow_upward, 1),
+                        SizedBox(height: 30),
+                        Butoon(Icons.arrow_downward, 4),
+                      ],
+                    ),
+                    Butoon(Icons.arrow_forward, 2),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -65,6 +68,7 @@ class Butoon extends StatelessWidget {
         padding: const EdgeInsets.all(2),
         child: RaisedButton(
           //color: Colors.green[300],
+          color: Colors.blueAccent,
           highlightColor: Colors.red,
           onHighlightChanged: (valor) {
             if (valor == true) {
@@ -78,6 +82,8 @@ class Butoon extends StatelessWidget {
           //animationDuration: Duration(seconds: 2),
           onPressed: () {},
           child: Icon(icon),
+          padding: EdgeInsets.all(20),
+          shape: CircleBorder(),
         ));
   }
 }
