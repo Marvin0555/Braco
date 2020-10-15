@@ -1,3 +1,4 @@
+import 'package:carro/main.dart';
 import 'package:carro/mqttcommunication.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -73,10 +74,10 @@ class Butoon extends StatelessWidget {
           onHighlightChanged: (valor) {
             if (valor == true) {
               i = directionValue;
-              publishLocation(topic_pup1, i.toString());
+              publishLocation(topico, i.toString());
             } else if (directionValue != 2 && directionValue != 3) {
               i = 5;
-              publishLocation(topic_pup1, i.toString());
+              publishLocation(topico, i.toString());
             }
           },
           //animationDuration: Duration(seconds: 2),

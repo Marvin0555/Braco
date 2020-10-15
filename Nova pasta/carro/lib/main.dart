@@ -3,6 +3,7 @@ import 'package:carro/mqttcommunication.dart';
 import 'package:carro/comando.dart';
 import 'package:flutter/material.dart';
 
+String topico;
 void main() {
   runApp(MyApp());
 }
@@ -48,19 +49,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: const EdgeInsets.all(100.0),
                   child: Image.asset('images/ocean.png'),
                 ),
-                SizedBox(
-                  height: 100.0,
-                ),
-                RaisedButton(
-                  color: Colors.green[300],
-                  onPressed: () {
-                    connectClient().then((value) => null);
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => HomeScreent()));
-                  },
-                  child: const Text('Entrar', style: TextStyle(fontSize: 30)),
-                ),
+                Selectbutton(Colors.blue, topic_pup1),
+                Selectbutton(Colors.pink, topic_pup2),
+                Selectbutton(Colors.orange, topic_pup3),
               ])),
         ));
+  }
+}
+
+class Selectbutton extends StatelessWidget {
+  MaterialColor cor;
+  String pub_text;
+  Selectbutton(this.cor, this.pub_text);
+  Widget build(BuildContext context) {
+    return RaisedButton(
+      color: cor,
+      child: Text(pub_text, style: TextStyle(fontSize: 25)),
+      onPressed: () {
+        connectClient().then((value) => topico = pub_text);
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HomeScreent()));
+      },
+    );
   }
 }

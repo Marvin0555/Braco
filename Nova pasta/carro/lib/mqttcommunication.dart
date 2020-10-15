@@ -10,6 +10,8 @@ mqtt.MqttClient client;
 mqtt.MqttConnectionState connectionState;
 StreamSubscription subscription;
 const topic_pup1 = 'directions-ocean-1';
+const topic_pup2 = 'directions-ocean-2';
+const topic_pup3 = 'directions-ocean-3';
 const topic_sub1 = 'laps-ocean-iot-1';
 
 /*void _subscribeToTopic(String topic) {
